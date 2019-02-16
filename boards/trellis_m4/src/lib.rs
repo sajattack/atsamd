@@ -8,11 +8,15 @@ extern crate cortex_m_rt;
 #[cfg(feature = "rt")]
 pub use cortex_m_rt::entry;
 
-pub use hal::atsamd51g19a::*;
-use hal::prelude::*;
-pub use hal::*;
+pub use hal::{*, atsamd51g19a::*};
 
 use gpio::{Floating, Input, Port};
+use hal::{
+    prelude::*,
+    clock::GenericClockController,
+    sercom::{I2CMaster4, PadPin},
+    time::Hertz,
+};
 
 define_pins!(
     /// Maps the pins to their arduino names and
@@ -75,3 +79,25 @@ define_pins!(
     /// APA102 (RGB LED control) SCK
     pin dotstar_ci = b2,
 );
+
+/// Convenience for setting up the labelled SDA, SCL pins to
+/// operate as an I2C master running at the specified frequency.
+pub fn i2c_master<F: Into<Hertz>>(
+    clocks: &mut GenericClockController,
+    bus_speed: F,
+    sercom4: SERCOM4,
+    mclk: &mut MCLK,
+    sda: gpio::Pb8<Input<Floating>>,
+    scl: gpio::Pb9<Input<Floating>>,
+    port: &mut Port,
+) -> I2CMaster4 {
+    let gclk0 = clocks.gclk0();
+    I2CMaster4::new(
+        &clocks.sercom4_core(&gclk0).unwrap(),
+        bus_speed.into(),
+        sercom4,
+        mclk,
+        sda.into_pad(port),
+        scl.into_pad(port),
+    )
+}
