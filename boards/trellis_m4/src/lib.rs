@@ -74,10 +74,12 @@ define_pins!(
     /// NeoPixels
     pin neopixel = a27,
 
-    /// APA102 (RGB LED control) MOSI
-    pin dotstar_di = b3,
+    /// APA102 (RGP LED control) MISO
+    pin b0 = b0,
     /// APA102 (RGB LED control) SCK
     pin dotstar_ci = b2,
+    /// APA102 (RGB LED control) MOSI
+    pin dotstar_di = b3,
 );
 
 /// Convenience for setting up the labelled SDA, SCL pins to
