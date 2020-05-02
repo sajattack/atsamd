@@ -4,37 +4,29 @@ pub type R = crate::R<u32, super::PARAM>;
 pub type NVMP_R = crate::R<u16, u16>;
 #[doc = "Page Size\n\nValue on reset: 6"]
 #[derive(Clone, Copy, Debug, PartialEq)]
+#[repr(u8)]
 pub enum PSZ_A {
     #[doc = "0: 8 bytes"]
-    _8,
+    _8 = 0,
     #[doc = "1: 16 bytes"]
-    _16,
+    _16 = 1,
     #[doc = "2: 32 bytes"]
-    _32,
+    _32 = 2,
     #[doc = "3: 64 bytes"]
-    _64,
+    _64 = 3,
     #[doc = "4: 128 bytes"]
-    _128,
+    _128 = 4,
     #[doc = "5: 256 bytes"]
-    _256,
+    _256 = 5,
     #[doc = "6: 512 bytes"]
-    _512,
+    _512 = 6,
     #[doc = "7: 1024 bytes"]
-    _1024,
+    _1024 = 7,
 }
 impl From<PSZ_A> for u8 {
     #[inline(always)]
     fn from(variant: PSZ_A) -> Self {
-        match variant {
-            PSZ_A::_8 => 0,
-            PSZ_A::_16 => 1,
-            PSZ_A::_32 => 2,
-            PSZ_A::_64 => 3,
-            PSZ_A::_128 => 4,
-            PSZ_A::_256 => 5,
-            PSZ_A::_512 => 6,
-            PSZ_A::_1024 => 7,
-        }
+        variant as _
     }
 }
 #[doc = "Reader of field `PSZ`"]
@@ -96,8 +88,116 @@ impl PSZ_R {
         *self == PSZ_A::_1024
     }
 }
+#[doc = "SmartEEPROM Supported\n\nValue on reset: 0"]
+#[derive(Clone, Copy, Debug, PartialEq)]
+pub enum SEE_A {
+    #[doc = "10: 163840 bytes"]
+    A = 10,
+    #[doc = "9: 147456 bytes"]
+    _9 = 9,
+    #[doc = "8: 131072 bytes"]
+    _8 = 8,
+    #[doc = "7: 114688 bytes"]
+    _7 = 7,
+    #[doc = "6: 98304 bytes"]
+    _6 = 6,
+    #[doc = "5: 81920 bytes"]
+    _5 = 5,
+    #[doc = "4: 65536 bytes"]
+    _4 = 4,
+    #[doc = "3: 49152 bytes"]
+    _3 = 3,
+    #[doc = "2: 32768 bytes"]
+    _2 = 2,
+    #[doc = "1: 16384 bytes"]
+    _1 = 1,
+    #[doc = "0: 0 bytes"]
+    _0 = 0,
+}
+impl From<SEE_A> for bool {
+    #[inline(always)]
+    fn from(variant: SEE_A) -> Self {
+        variant as u8 != 0
+    }
+}
 #[doc = "Reader of field `SEE`"]
-pub type SEE_R = crate::R<bool, bool>;
+pub type SEE_R = crate::R<bool, SEE_A>;
+impl SEE_R {
+    #[doc = r"Get enumerated values variant"]
+    #[inline(always)]
+    pub fn variant(&self) -> crate::Variant<bool, SEE_A> {
+        use crate::Variant::*;
+        match self.bits {
+            true => Val(SEE_A::A),
+            true => Val(SEE_A::_9),
+            true => Val(SEE_A::_8),
+            true => Val(SEE_A::_7),
+            true => Val(SEE_A::_6),
+            true => Val(SEE_A::_5),
+            true => Val(SEE_A::_4),
+            true => Val(SEE_A::_3),
+            true => Val(SEE_A::_2),
+            true => Val(SEE_A::_1),
+            false => Val(SEE_A::_0),
+            i => Res(i),
+        }
+    }
+    #[doc = "Checks if the value of the field is `A`"]
+    #[inline(always)]
+    pub fn is_a(&self) -> bool {
+        *self == SEE_A::A
+    }
+    #[doc = "Checks if the value of the field is `_9`"]
+    #[inline(always)]
+    pub fn is_9(&self) -> bool {
+        *self == SEE_A::_9
+    }
+    #[doc = "Checks if the value of the field is `_8`"]
+    #[inline(always)]
+    pub fn is_8(&self) -> bool {
+        *self == SEE_A::_8
+    }
+    #[doc = "Checks if the value of the field is `_7`"]
+    #[inline(always)]
+    pub fn is_7(&self) -> bool {
+        *self == SEE_A::_7
+    }
+    #[doc = "Checks if the value of the field is `_6`"]
+    #[inline(always)]
+    pub fn is_6(&self) -> bool {
+        *self == SEE_A::_6
+    }
+    #[doc = "Checks if the value of the field is `_5`"]
+    #[inline(always)]
+    pub fn is_5(&self) -> bool {
+        *self == SEE_A::_5
+    }
+    #[doc = "Checks if the value of the field is `_4`"]
+    #[inline(always)]
+    pub fn is_4(&self) -> bool {
+        *self == SEE_A::_4
+    }
+    #[doc = "Checks if the value of the field is `_3`"]
+    #[inline(always)]
+    pub fn is_3(&self) -> bool {
+        *self == SEE_A::_3
+    }
+    #[doc = "Checks if the value of the field is `_2`"]
+    #[inline(always)]
+    pub fn is_2(&self) -> bool {
+        *self == SEE_A::_2
+    }
+    #[doc = "Checks if the value of the field is `_1`"]
+    #[inline(always)]
+    pub fn is_1(&self) -> bool {
+        *self == SEE_A::_1
+    }
+    #[doc = "Checks if the value of the field is `_0`"]
+    #[inline(always)]
+    pub fn is_0(&self) -> bool {
+        *self == SEE_A::_0
+    }
+}
 impl R {
     #[doc = "Bits 0:15 - NVM Pages"]
     #[inline(always)]

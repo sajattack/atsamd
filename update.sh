@@ -28,6 +28,7 @@ done
 TOP=$PWD
 
 for svd in svd/*.svd.patched; do
+  sed -i 's|<description />||' "$TOP/${svd}"
   CHIP=$(echo "${svd##*/}" | cut -f 1 -d '.')
   chip=$(echo "$CHIP" | tr '[:upper:]' '[:lower:]')
 

@@ -1,4 +1,7 @@
-use crate::gpio::{self, IntoFunction, Port};
+use crate::gpio::{self, IntoFunction};
+use crate::pad;
+use crate::target_device::port::GROUP;
+
 pub use crate::pad::PadPin;
 
 

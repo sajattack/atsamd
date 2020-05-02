@@ -1,8 +1,9 @@
-#[doc = "Reader of register COMPCTRL%s"]
+#[doc = "Reader of register COMPCTRL[%s]"]
 pub type R = crate::R<u32, super::COMPCTRL>;
-#[doc = "Writer for register COMPCTRL%s"]
+#[doc = "Writer for register COMPCTRL[%s]"]
 pub type W = crate::W<u32, super::COMPCTRL>;
-#[doc = "Register COMPCTRL%s `reset()`'s with value 0"]
+#[doc = "Register COMPCTRL[%s]
+`reset()`'s with value 0"]
 impl crate::ResetValue for super::COMPCTRL {
     type Type = u32;
     #[inline(always)]

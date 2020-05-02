@@ -2,12 +2,12 @@
 pub type R = crate::R<u8, super::HC1R>;
 #[doc = "Writer for register HC1R"]
 pub type W = crate::W<u8, super::HC1R>;
-#[doc = "Register HC1R `reset()`'s with value 0"]
+#[doc = "Register HC1R `reset()`'s with value 0x0e00"]
 impl crate::ResetValue for super::HC1R {
     type Type = u8;
     #[inline(always)]
     fn reset_value() -> Self::Type {
-        0
+        0x0e00
     }
 }
 #[doc = "LED Control\n\nValue on reset: 0"]

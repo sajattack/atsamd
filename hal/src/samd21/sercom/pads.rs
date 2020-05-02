@@ -1,4 +1,7 @@
-use crate::gpio::{self, IntoFunction, Port};
+use crate::gpio::{self, IntoFunction};
+use crate::target_device::port::GROUP;
+use crate::pad;
+
 pub use crate::pad::PadPin;
 
 // sercom0[0]:  PA04:D   PA08:C
