@@ -7,7 +7,6 @@
 //! for the pin.   The pin configuration is reflected through the
 //! use of type states to make the interface (ideally, or at least practically)
 //! impossible to misuse.
-use crate::target_device::port::group::{DIRCLR, DIRSET, OUTCLR, OUTSET, PINCFG, PMUX};
 use crate::target_device::port::GROUP;
 use crate::target_device::PORT;
 use core::marker::PhantomData;
